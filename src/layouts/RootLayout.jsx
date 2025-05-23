@@ -1,5 +1,5 @@
 
-import { Outlet } from 'react-router'
+import { Outlet, useLoaderData } from 'react-router'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { Typewriter } from 'react-simple-typewriter'
@@ -9,7 +9,8 @@ import { AuthContext } from '../Auth/AuthContext'
 
 const RootLayout = () => {
     const { user, loading } = useContext(AuthContext);
-
+    const lod = useLoaderData()
+    
     if (loading) {
         return <div className="min-h-screen flex justify-center items-center">
             <span className="loading loading-ring loading-xl"></span>

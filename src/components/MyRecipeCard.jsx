@@ -74,7 +74,7 @@ const MyRecipeCard = ({ item, onDelete }) => {
             if (result.isConfirmed) {
                 const updateData = result.value;
                 
-                fetch(`https://server-side-93le6ou2k-md-soriful-islams-projects.vercel.app/users/${id}`, {
+                fetch(`http://localhost:3000/users/${id}`, {
                     method: "PUT",
                     headers: {
                         "Content-Type": "application/json"
@@ -111,7 +111,7 @@ const MyRecipeCard = ({ item, onDelete }) => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`https://server-side-93le6ou2k-md-soriful-islams-projects.vercel.app/users/${id}`, {
+                fetch(`http://localhost:3000/users/${id}`, {
                     method: "DELETE",
                 })
                 .then(res => res.json())

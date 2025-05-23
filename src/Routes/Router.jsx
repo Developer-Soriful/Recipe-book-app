@@ -19,7 +19,7 @@ export const router = createBrowserRouter([
         children: [
             {
                 index: true,
-                loader: () => fetch(`https://server-side-93le6ou2k-md-soriful-islams-projects.vercel.app/users/toprecipe`),
+                loader: () => fetch(`https://server-side-eight-pearl.vercel.app/toprecipe`),
                 element: (
                     <PrivateRoute>
                         <HomeLayout />
@@ -28,7 +28,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/allrecipes",
-                loader: () => fetch(`https://server-side-93le6ou2k-md-soriful-islams-projects.vercel.app/users`),
+                loader: () => fetch(`https://server-side-eight-pearl.vercel.app/users`),
                 element: (
                     <PrivateRoute>
                         <AllRecipe />
@@ -52,7 +52,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/users/:id",
-                loader: ({ params }) => fetch(`https://server-side-93le6ou2k-md-soriful-islams-projects.vercel.app/user/${params.id}`),
+                loader: ({ params }) => fetch(`https://server-side-eight-pearl.vercel.app/users/${params.id}`),
                 element: <RecipeCardDetails />,
             },
             {

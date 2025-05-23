@@ -8,7 +8,7 @@ const MyRecipes = () => {
 
     useEffect(() => {
         if (user?.email) {
-            fetch(`https://server-side-93le6ou2k-md-soriful-islams-projects.vercel.app/users/email/${user.email}`)
+            fetch(`https://server-side-eight-pearl.vercel.app/users/email/${user.email}`)
                 .then(res => res.json())
                 .then(data => {
                     setItems(data || []);

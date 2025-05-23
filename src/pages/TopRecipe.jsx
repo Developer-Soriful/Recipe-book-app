@@ -1,16 +1,19 @@
-
 import { Link } from 'react-router';
 import { Heart } from 'lucide-react';
 import { useState } from 'react';
 
 const TopRecipe = ({ toprecipe }) => {
-  const [Recipe, setRecipe] = useState(toprecipe)
+  const [Recipe, setRecipe] = useState(Array.isArray(toprecipe) ? toprecipe : []);
+
+  if (!Array.isArray(Recipe) || Recipe.length === 0) {
+    return <div className="text-center py-4">No recipes found</div>;
+  }
 
   return (
     <>
       {
         Recipe.map(recipe => {
-          return <div className=" rounded-2xl shadow-md hover:shadow-xl transition duration-300 overflow-hidden  border-[0.1px] border-gray-700 p-3">
+          return <div key={recipe._id} className=" rounded-2xl shadow-md hover:shadow-xl transition duration-300 overflow-hidden  border-[0.1px] border-gray-700 p-3">
             {/* Image */}
             <div className="h-48 w-full ">
               <img

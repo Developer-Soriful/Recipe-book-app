@@ -4,7 +4,7 @@ import { Link, useLoaderData } from "react-router";
 
 const RecipeCardDetails = () => {
     const recipe = useLoaderData();
-    console.log(recipe);
+    console.log("Recipe data:", recipe);
     
     // Add error handling
     if (!recipe) {
@@ -23,15 +23,25 @@ const RecipeCardDetails = () => {
     } = recipe;
     const [like, setLike] = useState(likeCount || 0)
     const handleLike = (id) => {
-
-        fetch(`https://server-side-93le6ou2k-md-soriful-islams-projects.vercel.app/user/${id}`, {
+        fetch(`https://server-side-eight-pearl.vercel.app/users/${id}`, {
             method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            }
         })
-            .then(res => res.json())
+            .then(res => {
+                if (!res.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return res.json();
+            })
             .then(data => {
                 if (data.modifiedCount > 0) {
-                    setLike(like + 1); // UI তে update
+                    setLike(like + 1);
                 }
+            })
+            .catch(error => {
+                console.error('Error updating like:', error);
             });
     };
 
