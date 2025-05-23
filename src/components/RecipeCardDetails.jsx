@@ -4,7 +4,8 @@ import { Link, useLoaderData } from "react-router";
 
 const RecipeCardDetails = () => {
     const recipe = useLoaderData();
-
+    console.log(recipe);
+    
     // Add error handling
     if (!recipe) {
         return <div className="text-center py-10">Loading...</div>;
@@ -23,7 +24,7 @@ const RecipeCardDetails = () => {
     const [like, setLike] = useState(likeCount || 0)
     const handleLike = (id) => {
 
-        fetch(`https://server-side-eight-pearl.vercel.app/${id}`, {
+        fetch(`https://server-side-93le6ou2k-md-soriful-islams-projects.vercel.app/user/${id}`, {
             method: 'PATCH',
         })
             .then(res => res.json())
