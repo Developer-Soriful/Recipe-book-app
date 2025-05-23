@@ -73,28 +73,27 @@ const MyRecipeCard = ({ item, onDelete }) => {
         }).then((result) => {
             if (result.isConfirmed) {
                 const updateData = result.value;
-                
-                fetch(`http://localhost:3000/users/${id}`, {
+
+                fetch(`https://server-side-eight-pearl.vercel.app/users/${id}`, {
                     method: "PUT",
                     headers: {
-                        "Content-Type": "application/json"
+                        "Content-Type": "application/json",
                     },
+                    credentials: 'include',
                     body: JSON.stringify(updateData)
                 })
-                .then(res => res.json())
-                .then(data => {
-                    console.log("Updated:", data);
-                    // Update local state with new data
-                    setRecipeData(prevData => ({
-                        ...prevData,
-                        ...updateData
-                    }));
-                    Swal.fire("Success", "Recipe updated successfully!", "success");
-                })
-                .catch(err => {
-                    console.error(err);
-                    Swal.fire("Error", "Something went wrong!", "error");
-                });
+                    .then(res => res.json())
+                    .then(data => {
+                        setRecipeData(prevData => ({
+                            ...prevData,
+                            ...updateData
+                        }));
+                        Swal.fire("Success", "Recipe updated successfully!", "success");
+                    })
+                    .catch(err => {
+                        console.error(err);
+                        Swal.fire("Error", "Something went wrong!", "error");
+                    });
             }
         });
     };
@@ -111,20 +110,24 @@ const MyRecipeCard = ({ item, onDelete }) => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:3000/users/${id}`, {
+                fetch(`https://server-side-eight-pearl.vercel.app/users/${id}`, {
                     method: "DELETE",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    credentials: 'include'
                 })
-                .then(res => res.json())
-                .then(data => {
-                    if (data.deletedCount > 0) {
-                        Swal.fire("Deleted!", "Your recipe has been deleted.", "success");
-                        onDelete(); // ✅ parent function call to remove from UI
-                    }
-                })
-                .catch(err => {
-                    console.log(err);
-                    Swal.fire("Error", "Something went wrong!", "error");
-                });
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.deletedCount > 0) {
+                            Swal.fire("Deleted!", "Your recipe has been deleted.", "success");
+                            onDelete(); // ✅ parent function call to remove from UI
+                        }
+                    })
+                    .catch(err => {
+                        console.log(err);
+                        Swal.fire("Error", "Something went wrong!", "error");
+                    });
             }
         });
     };
@@ -187,8 +190,8 @@ const MyRecipeCard = ({ item, onDelete }) => {
                         >
                             <FaEdit /> Update
                         </button>
-                        <button 
-                            onClick={() => handleDelete(_id)} 
+                        <button
+                            onClick={() => handleDelete(_id)}
                             className="bg-red-500 hover:bg-red-600 text-white text-sm px-3 py-1 rounded-lg flex items-center gap-1"
                         >
                             <FaTrash /> Delete

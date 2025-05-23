@@ -19,9 +19,12 @@ const MyRecipes = () => {
     
     // ✅ Delete handler
     const handleDelete = (id) => {
+        console.log(id);
+        
         const filtered = items.filter(item => item._id !== id);
         setItems(filtered);
     };
+
 
     if (loading) {
         return <p>loading....</p>;
