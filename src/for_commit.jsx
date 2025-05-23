@@ -7,4 +7,5 @@
  * added header requerment fature all
  * added firebase authanticaion
  * added protected route
+ * added auth all auth fature
  */
