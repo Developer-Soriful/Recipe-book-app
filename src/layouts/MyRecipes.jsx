@@ -5,7 +5,7 @@ import MyRecipeCard from '../components/MyRecipeCard';
 const MyRecipes = () => {
     const { user, loading } = useContext(AuthContext);
     const [items, setItems] = useState([]);
-
+    
     useEffect(() => {
         if (user?.email) {
             fetch(`https://server-side-eight-pearl.vercel.app/users/email/${user.email}`)
@@ -16,7 +16,6 @@ const MyRecipes = () => {
                 .catch(err => console.error(err));
         }
     }, [user?.email]);
-    console.log(items);
     
     // ✅ Delete handler
     const handleDelete = (id) => {

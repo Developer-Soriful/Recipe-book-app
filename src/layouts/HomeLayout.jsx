@@ -9,7 +9,6 @@ import { Link, useLoaderData } from 'react-router';
 const HomeLayout = () => {
   const { user, loading } = useContext(AuthContext);
   const toprecipe = useLoaderData()
-
   if (loading) {
     return <div className='min-h-screen flex justify-center items-center'>
       <span className="loading loading-ring loading-xl"></span>

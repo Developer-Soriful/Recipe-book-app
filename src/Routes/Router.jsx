@@ -11,6 +11,7 @@ import ErrorPage from "../pages/ErrorPage";
 import RecipeCardDetails from "../components/RecipeCardDetails";
 import MyRecipes from "../layouts/MyRecipes";
 
+
 export const router = createBrowserRouter([
     {
         path: "/",
@@ -19,7 +20,11 @@ export const router = createBrowserRouter([
         children: [
             {
                 index: true,
-                loader: () => fetch(`https://server-side-eight-pearl.vercel.app/toprecipe`),
+                loader: async () => {
+                    const response = await fetch('https://server-side-eight-pearl.vercel.app/toprecipe');
+                    const data = await response.json();
+                    return data;
+                },
                 element: (
                     <PrivateRoute>
                         <HomeLayout />
@@ -28,7 +33,11 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/allrecipes",
-                loader: () => fetch(`https://server-side-eight-pearl.vercel.app/users`),
+                loader: async () => {
+                    const response = await fetch('https://server-side-eight-pearl.vercel.app/users');
+                    const data = await response.json();
+                    return data;
+                },
                 element: (
                     <PrivateRoute>
                         <AllRecipe />
@@ -52,7 +61,11 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/users/:id",
-                loader: ({ params }) => fetch(`https://server-side-eight-pearl.vercel.app/users/${params.id}`),
+                loader: async ({ params }) => {
+                    const response = await fetch(`https://server-side-eight-pearl.vercel.app/users/${params.id}`);
+                    const data = await response.json();
+                    return data;
+                },
                 element: <RecipeCardDetails />,
             },
             {

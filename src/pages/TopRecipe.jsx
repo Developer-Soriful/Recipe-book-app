@@ -3,8 +3,8 @@ import { Heart } from 'lucide-react';
 import { useState } from 'react';
 
 const TopRecipe = ({ toprecipe }) => {
-  const [Recipe, setRecipe] = useState(Array.isArray(toprecipe) ? toprecipe : []);
-
+  const [Recipe, setRecipe] = useState(toprecipe);
+  
   if (!Array.isArray(Recipe) || Recipe.length === 0) {
     return <div className="text-center py-4">No recipes found</div>;
   }

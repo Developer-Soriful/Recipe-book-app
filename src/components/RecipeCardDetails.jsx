@@ -1,13 +1,14 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FaHeart, FaEdit, FaTrash } from "react-icons/fa";
 import { Link, useLoaderData } from "react-router";
+import { AuthContext } from "../Auth/AuthContext";
 
 const RecipeCardDetails = () => {
     const recipe = useLoaderData();
-    console.log("Recipe data:", recipe);
+    const { user } = useContext(AuthContext)
     
     // Add error handling
-    if (!recipe) {
+    if (!user) {
         return <div className="text-center py-10">Loading...</div>;
     }
 
@@ -26,8 +27,9 @@ const RecipeCardDetails = () => {
         fetch(`https://server-side-eight-pearl.vercel.app/users/${id}`, {
             method: 'PATCH',
             headers: {
-                'Content-Type': 'application/json'
-            }
+                'Content-Type': 'application/json',
+            },
+            credentials: 'include'
         })
             .then(res => {
                 if (!res.ok) {
@@ -45,7 +47,6 @@ const RecipeCardDetails = () => {
             });
     };
 
-    console.log(like);
 
     return (
         <>
