@@ -8,4 +8,5 @@
  * added firebase authanticaion
  * added protected route
  * added auth all auth fature
+ * added recipe details 
  */
