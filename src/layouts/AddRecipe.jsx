@@ -18,7 +18,7 @@ const AddRecipe = () => {
     recipeData.userName = user?.displayName || "Anonymous";
     recipeData.userPhoto = user?.photoURL || "https://i.ibb.co/2tJ4H9R/user.png";
 
-    fetch(`http://localhost:3000/users`,
+    fetch(`https://assignment-10-auth-1f744.web.app/users`,
       {
         method: "POST",
         headers: {

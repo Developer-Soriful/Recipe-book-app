@@ -19,7 +19,7 @@ export const router = createBrowserRouter([
         children: [
             {
                 index: true,
-                loader: () => fetch(`http://localhost:3000/toprecipe`),
+                loader: () => fetch(`https://assignment-10-auth-1f744.web.app/toprecipe`),
                 element: (
                     <PrivateRoute>
                         <HomeLayout />
@@ -28,7 +28,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/allrecipes",
-                loader: () => fetch(`http://localhost:3000/users`),
+                loader: () => fetch(`https://assignment-10-auth-1f744.web.app/users`),
                 element: (
                     <PrivateRoute>
                         <AllRecipe />
