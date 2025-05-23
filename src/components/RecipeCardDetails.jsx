@@ -23,7 +23,7 @@ const RecipeCardDetails = () => {
     const [like, setLike] = useState(likeCount || 0)
     const handleLike = (id) => {
 
-        fetch(`http://localhost:3000/users/${id}`, {
+        fetch(`https://server-side-eight-pearl.vercel.app/${id}`, {
             method: 'PATCH',
         })
             .then(res => res.json())

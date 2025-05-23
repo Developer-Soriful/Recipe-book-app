@@ -52,7 +52,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/users/:id",
-                loader: ({ params }) => fetch(`http://localhost:3000/users/${params.id}`),
+                loader: ({ params }) => fetch(`https://server-side-eight-pearl.vercel.app/${params.id}`),
                 element: <RecipeCardDetails />,
             },
             {

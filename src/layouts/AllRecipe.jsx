@@ -5,7 +5,6 @@ import RecipeCard from '../components/RecipeCard'
 const AllRecipe = () => {
   const recipeData = useLoaderData()
   const [recipeCardData, setRecipeCardData] = useState(recipeData)
-
   const handleCuisineChange = (e) => {
     // select korbo full target tare
     const selectTarget = e.target.value
