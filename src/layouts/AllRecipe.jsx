@@ -26,12 +26,12 @@ const AllRecipe = () => {
           id="cuisine"
           onChange={handleCuisineChange}
         >
-          <option value="All">All</option>
-          <option value="Italian">Italian</option>
-          <option value="Mexican">Mexican</option>
-          <option value="Indian">Indian</option>
-          <option value="Chinese">Chinese</option>
-          <option value="Others">Others</option>
+          <option className=' text-black' value="All">All</option>
+          <option className=' text-black' value="Italian">Italian</option>
+          <option className=' text-black' value="Mexican">Mexican</option>
+          <option className=' text-black' value="Indian">Indian</option>
+          <option className=' text-black' value="Chinese">Chinese</option>
+          <option className=' text-black' value="Others">Others</option>
         </select>
       </div>
 
