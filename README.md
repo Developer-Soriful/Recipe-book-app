@@ -43,6 +43,15 @@ A user-friendly full-stack Recipe Book App that allows users to discover, add, m
 - **Recipe Details Page** (Like functionality and recipe info)
 
 ---
+- `/` → HomeLayout (protected)
+- `/allrecipes` → All recipes (protected)
+- `/addrecipes` → Add a new recipe (protected)
+- `/profile` → User profile (protected)
+- `/users/:id` → Recipe details (dynamic route)
+- `/myrecipes` → User’s recipes
+- `/login` → Login page
+- `/signup` → Signup page
+---
 
 ## 🔧 Tech Stack
 
