@@ -100,6 +100,7 @@ export const router = createBrowserRouter([
               return data;
             },
           },
+          // here is the add items route
           {
             path: "/dashboard/addItems",
             element: <AddRecipe />,
