@@ -69,5 +69,5 @@ A user-friendly full-stack Recipe Book App that allows users to discover, add, m
 
 ---
 
-## 📁 Folder Structure (Client)
+
 
