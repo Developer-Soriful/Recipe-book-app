@@ -3,16 +3,14 @@ import { AuthContext } from "../Auth/AuthContext";
 import { Link, NavLink } from "react-router";
 import { FaAddressBook } from "react-icons/fa6";
 import { GiAllSeeingEye } from "react-icons/gi";
-import { MdMyLocation } from "react-icons/md";
+import { MdDashboard, MdMyLocation } from "react-icons/md";
 import { BiHomeAlt } from "react-icons/bi";
 import { Tooltip } from "react-tooltip";
+import { GrDashboard } from "react-icons/gr";
 
 const Header = () => {
   const { user } = useContext(AuthContext);
   const [isDark, setIsDark] = useState(false);
-  // something
-  // Toggle Theme Class
-  // some change
   useEffect(() => {
     const theme = isDark ? "dark" : "light";
     document.documentElement.setAttribute("data-theme", theme);
@@ -67,7 +65,24 @@ const Header = () => {
                 id="my-tooltip"
                 content="Hello world!"
               />
-
+              <NavLink
+                to="/dashboard"
+                className={({ isActive }) =>
+                  `flex items-center gap-2 duration-200 ${
+                    isActive
+                      ? "text-green-500 font-semibold"
+                      : "hover:text-green-500"
+                  }`
+                }
+              >
+                <MdDashboard />
+                <span
+                  data-tooltip-id="my-tooltip"
+                  data-tooltip-content="Go to Dashboard!"
+                >
+                  Dashboard
+                </span>
+              </NavLink>
               <NavLink
                 to="/allrecipes"
                 className={({ isActive }) =>

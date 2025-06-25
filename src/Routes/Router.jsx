@@ -10,6 +10,9 @@ import Profile from "../pages/Profile";
 import ErrorPage from "../pages/ErrorPage";
 import RecipeCardDetails from "../components/RecipeCardDetails";
 import MyRecipes from "../layouts/MyRecipes";
+import Dashboard from "../components/Dashboard";
+import Overview from "../pages/Overview";
+import MyItemsTable from "../pages/MyItemsTable";
 
 export const router = createBrowserRouter([
   {
@@ -20,9 +23,7 @@ export const router = createBrowserRouter([
       {
         index: true,
         loader: async () => {
-          const response = await fetch(
-            "https://server-side-eight-pearl.vercel.app/toprecipe"
-          );
+          const response = await fetch("https://book-recipe-server.vercel.app/toprecipe");
           const data = await response.json();
           return data;
         },
@@ -31,9 +32,7 @@ export const router = createBrowserRouter([
       {
         path: "/allrecipes",
         loader: async () => {
-          const response = await fetch(
-            "https://server-side-eight-pearl.vercel.app/users"
-          );
+          const response = await fetch("https://book-recipe-server.vercel.app/users");
           const data = await response.json();
           return data;
         },
@@ -59,7 +58,7 @@ export const router = createBrowserRouter([
         path: "/users/:id",
         loader: async ({ params }) => {
           const response = await fetch(
-            `https://server-side-eight-pearl.vercel.app/users/${params.id}`
+            `https://book-recipe-server.vercel.app/users/${params.id}`
           );
           const data = await response.json();
           return data;
@@ -77,6 +76,44 @@ export const router = createBrowserRouter([
             <MyRecipes />
           </PrivateRoute>
         ),
+      },
+      {
+        path: "/dashboard",
+        element: <Dashboard />,
+
+        children: [
+          {
+            index: true,
+            element: <Overview />,
+            loader: async () => {
+              const response = await fetch("https://book-recipe-server.vercel.app/users");
+              const data = await response.json();
+              return data;
+            },
+          },
+          {
+            path: "/dashboard/allItems",
+            element: <AllRecipe />,
+            loader: async () => {
+              const response = await fetch("https://book-recipe-server.vercel.app/users");
+              const data = await response.json();
+              return data;
+            },
+          },
+          {
+            path: "/dashboard/addItems",
+            element: <AddRecipe />,
+          },
+          {
+            path: "/dashboard/myItems",
+            element: <MyItemsTable />,
+            loader: async () => {
+              const response = await fetch("https://book-recipe-server.vercel.app/users");
+              const data = await response.json();
+              return data;
+            },
+          }
+        ],
       },
     ],
   },

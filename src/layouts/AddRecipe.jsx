@@ -18,7 +18,7 @@ const AddRecipe = () => {
     recipeData.userName = user?.displayName || "Anonymous";
     recipeData.userPhoto = user?.photoURL || "https://i.ibb.co/2tJ4H9R/user.png";
 
-    fetch(`https://server-side-eight-pearl.vercel.app/users`,
+    fetch(`https://book-recipe-server.vercel.app/users`,
       {
         method: "POST",
         headers: {
