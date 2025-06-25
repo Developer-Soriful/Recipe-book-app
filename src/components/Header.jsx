@@ -12,6 +12,7 @@ const Header = () => {
   const [isDark, setIsDark] = useState(false);
   // something
   // Toggle Theme Class
+  // some change
   useEffect(() => {
     const theme = isDark ? "dark" : "light";
     document.documentElement.setAttribute("data-theme", theme);
