@@ -30,7 +30,7 @@ const Header = () => {
           <div className="flex gap-4 items-center">
             <div className='rounded-full h-10'>
               <img
-                src="https://as1.ftcdn.net/jpg/12/55/40/12/1000_F_1255401284_nCTmn4OpMap4Ulucr7peQWH6U6jXZPuF.jpg"
+                src="/logo.png"
                 alt="Website Logo"
                 className=" mr-2 w-full h-full"
               />

@@ -11,78 +11,81 @@ import ErrorPage from "../pages/ErrorPage";
 import RecipeCardDetails from "../components/RecipeCardDetails";
 import MyRecipes from "../layouts/MyRecipes";
 
-
 export const router = createBrowserRouter([
-    {
-        path: "/",
-        element: <RootLayout />,
-        errorElement: <ErrorPage />,
-        children: [
-            {
-                index: true,
-                loader: async () => {
-                    const response = await fetch('https://server-side-eight-pearl.vercel.app/toprecipe');
-                    const data = await response.json();
-                    return data;
-                },
-                element: (
-                    <PrivateRoute>
-                        <HomeLayout />
-                    </PrivateRoute>
-                ),
-            },
-            {
-                path: "/allrecipes",
-                loader: async () => {
-                    const response = await fetch('https://server-side-eight-pearl.vercel.app/users');
-                    const data = await response.json();
-                    return data;
-                },
-                element: (
-                    <PrivateRoute>
-                        <AllRecipe />
-                    </PrivateRoute>
-                ),
-            },
-            {
-                path: "/addrecipes",
-                element: (
-                    <PrivateRoute>
-                        <AddRecipe />
-                    </PrivateRoute>
-                ),
-            },
-            {
-                path: "/profile",
-                element:
-                    <PrivateRoute>
-                        <Profile />
-                    </PrivateRoute>,
-            },
-            {
-                path: "/users/:id",
-                loader: async ({ params }) => {
-                    const response = await fetch(`https://server-side-eight-pearl.vercel.app/users/${params.id}`);
-                    const data = await response.json();
-                    return data;
-                },
-                element: <RecipeCardDetails />,
-            },
-            {
-                path: "/myrecipes",
-                element: <PrivateRoute>
-                    <MyRecipes />
-                </PrivateRoute>
-            }
-        ],
-
-    },
-    {
-        path: "/login",
-        element: <Login />,
-    },
-    {
-        path: "/signup",
-        element: <SignUp />,
-    },
+  {
+    path: "/",
+    element: <RootLayout />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        index: true,
+        loader: async () => {
+          const response = await fetch(
+            "https://server-side-eight-pearl.vercel.app/toprecipe"
+          );
+          const data = await response.json();
+          return data;
+        },
+        element: <HomeLayout />,
+      },
+      {
+        path: "/allrecipes",
+        loader: async () => {
+          const response = await fetch(
+            "https://server-side-eight-pearl.vercel.app/users"
+          );
+          const data = await response.json();
+          return data;
+        },
+        element: <AllRecipe />,
+      },
+      {
+        path: "/addrecipes",
+        element: (
+          <PrivateRoute>
+            <AddRecipe />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/profile",
+        element: (
+          <PrivateRoute>
+            <Profile />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/users/:id",
+        loader: async ({ params }) => {
+          const response = await fetch(
+            `https://server-side-eight-pearl.vercel.app/users/${params.id}`
+          );
+          const data = await response.json();
+          return data;
+        },
+        element: (
+          <PrivateRoute>
+            <RecipeCardDetails />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/myrecipes",
+        element: (
+          <PrivateRoute>
+            <MyRecipes />
+          </PrivateRoute>
+        ),
+      },
+    ],
+  },
+  {
+    path: "/login",
+    element: <Login />,
+  },
+  {
+    path: "/signup",
+    element: <SignUp />,
+  },
 ]);
