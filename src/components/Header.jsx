@@ -1,26 +1,25 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { AuthContext } from '../Auth/AuthContext'
-import { Link, NavLink } from 'react-router'
-import { FaAddressBook } from 'react-icons/fa6'
-import { GiAllSeeingEye } from 'react-icons/gi'
-import { MdMyLocation } from "react-icons/md"
-import { BiHomeAlt } from 'react-icons/bi'
-import { Tooltip } from 'react-tooltip'
-
+import React, { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../Auth/AuthContext";
+import { Link, NavLink } from "react-router";
+import { FaAddressBook } from "react-icons/fa6";
+import { GiAllSeeingEye } from "react-icons/gi";
+import { MdMyLocation } from "react-icons/md";
+import { BiHomeAlt } from "react-icons/bi";
+import { Tooltip } from "react-tooltip";
 
 const Header = () => {
   const { user } = useContext(AuthContext);
-  const [isDark, setIsDark] = useState(false)
-
+  const [isDark, setIsDark] = useState(false);
+  // something
   // Toggle Theme Class
   useEffect(() => {
-    const theme = isDark ? 'dark' : 'light'
-    document.documentElement.setAttribute('data-theme', theme)
-  }, [isDark])
+    const theme = isDark ? "dark" : "light";
+    document.documentElement.setAttribute("data-theme", theme);
+  }, [isDark]);
 
   const handleThemeToggle = () => {
-    setIsDark(prev => !prev)
-  }
+    setIsDark((prev) => !prev);
+  };
 
   return (
     <div>
@@ -28,7 +27,7 @@ const Header = () => {
         <div className="container mx-auto px-4 flex items-center justify-between">
           {/* Logo */}
           <div className="flex gap-4 items-center">
-            <div className='rounded-full h-10'>
+            <div className="rounded-full h-10">
               <img
                 src="/logo.png"
                 alt="Website Logo"
@@ -46,43 +45,81 @@ const Header = () => {
               <NavLink
                 to="/"
                 className={({ isActive }) =>
-                  `flex items-center gap-2 duration-200 ${isActive ? 'text-green-500 font-semibold' : 'hover:text-green-500'}`
+                  `flex items-center gap-2 duration-200 ${
+                    isActive
+                      ? "text-green-500 font-semibold"
+                      : "hover:text-green-500"
+                  }`
                 }
               >
                 <BiHomeAlt />
-                <span data-tooltip-id="my-tooltip" data-tooltip-content="Go to Home">Home</span>
+                <span
+                  data-tooltip-id="my-tooltip"
+                  data-tooltip-content="Go to Home"
+                >
+                  Home
+                </span>
               </NavLink>
 
-
-
-              <Tooltip className='z-10' id="my-tooltip" content="Hello world!" />
+              <Tooltip
+                className="z-10"
+                id="my-tooltip"
+                content="Hello world!"
+              />
 
               <NavLink
                 to="/allrecipes"
                 className={({ isActive }) =>
-                  `flex items-center gap-2 duration-200 ${isActive ? 'text-green-500 font-semibold' : 'hover:text-green-500'}`
+                  `flex items-center gap-2 duration-200 ${
+                    isActive
+                      ? "text-green-500 font-semibold"
+                      : "hover:text-green-500"
+                  }`
                 }
               >
                 <GiAllSeeingEye />
-                <span data-tooltip-id="my-tooltip" data-tooltip-content="Go to All Recipes!">All Recipes</span>
+                <span
+                  data-tooltip-id="my-tooltip"
+                  data-tooltip-content="Go to All Recipes!"
+                >
+                  All Recipes
+                </span>
               </NavLink>
               <NavLink
                 to="/myrecipes"
                 className={({ isActive }) =>
-                  `flex items-center gap-2 duration-200 ${isActive ? 'text-green-500 font-semibold' : 'hover:text-green-500'}`
+                  `flex items-center gap-2 duration-200 ${
+                    isActive
+                      ? "text-green-500 font-semibold"
+                      : "hover:text-green-500"
+                  }`
                 }
               >
                 <MdMyLocation />
-                <span data-tooltip-id="my-tooltip" data-tooltip-content="Go to My Recipes!">My Recipes</span>
+                <span
+                  data-tooltip-id="my-tooltip"
+                  data-tooltip-content="Go to My Recipes!"
+                >
+                  My Recipes
+                </span>
               </NavLink>
               <NavLink
                 to="/addrecipes"
                 className={({ isActive }) =>
-                  `flex items-center gap-2 duration-200 ${isActive ? 'text-green-500 font-semibold' : 'hover:text-green-500'}`
+                  `flex items-center gap-2 duration-200 ${
+                    isActive
+                      ? "text-green-500 font-semibold"
+                      : "hover:text-green-500"
+                  }`
                 }
               >
                 <FaAddressBook />
-                <span data-tooltip-id="my-tooltip" data-tooltip-content="Go to All Recipes!">Add Recipes</span>
+                <span
+                  data-tooltip-id="my-tooltip"
+                  data-tooltip-content="Go to All Recipes!"
+                >
+                  Add Recipes
+                </span>
               </NavLink>
             </ul>
           </nav>
@@ -92,22 +129,30 @@ const Header = () => {
             {!user ? (
               <>
                 <Link to="/signup">
-                  <button className="hover:text-blue-600 transition">Sign up</button>
+                  <button className="hover:text-blue-600 transition">
+                    Sign up
+                  </button>
                 </Link>
                 <Link to="/login">
-                  <button className="hover:text-blue-600 transition">Login</button>
+                  <button className="hover:text-blue-600 transition">
+                    Login
+                  </button>
                 </Link>
               </>
             ) : (
               <>
                 <Link to="/profile">
                   <div className="relative group flex items-center rounded-full cursor-pointer border-2 border-gray-500">
-
-                    <span data-tooltip-id="my-tooltip" data-tooltip-content={user.displayName}><div className="avatar">
-                      <div className="w-8 rounded-full">
-                        <img src={user.photoURL} alt="profile" />
+                    <span
+                      data-tooltip-id="my-tooltip"
+                      data-tooltip-content={user.displayName}
+                    >
+                      <div className="avatar">
+                        <div className="w-8 rounded-full">
+                          <img src={user.photoURL} alt="profile" />
+                        </div>
                       </div>
-                    </div></span>
+                    </span>
                   </div>
                 </Link>
 
@@ -116,7 +161,7 @@ const Header = () => {
                   onClick={handleThemeToggle}
                   className="px-3 py-1 border border-gray-300 dark:border-gray-600 rounded text-sm hover:bg-gray-100 dark:hover:bg-gray-700 transition"
                 >
-                  {isDark ? '☀️ Light' : '🌙 Dark'}
+                  {isDark ? "☀️ Light" : "🌙 Dark"}
                 </button>
               </>
             )}
@@ -124,7 +169,7 @@ const Header = () => {
         </div>
       </header>
     </div>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;
