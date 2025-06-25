@@ -23,7 +23,7 @@ export const router = createBrowserRouter([
       {
         index: true,
         loader: async () => {
-          const response = await fetch("https://book-recipe-server.vercel.app/toprecipe");
+          const response = await fetch("https://book-recipes-server.vercel.app/toprecipe");
           const data = await response.json();
           return data;
         },
@@ -32,7 +32,7 @@ export const router = createBrowserRouter([
       {
         path: "/allrecipes",
         loader: async () => {
-          const response = await fetch("https://book-recipe-server.vercel.app/users");
+          const response = await fetch("https://book-recipes-server.vercel.app/users");
           const data = await response.json();
           return data;
         },
@@ -58,7 +58,7 @@ export const router = createBrowserRouter([
         path: "/users/:id",
         loader: async ({ params }) => {
           const response = await fetch(
-            `https://book-recipe-server.vercel.app/users/${params.id}`
+            `https://book-recipes-server.vercel.app/users/${params.id}`
           );
           const data = await response.json();
           return data;
@@ -86,7 +86,7 @@ export const router = createBrowserRouter([
             index: true,
             element: <Overview />,
             loader: async () => {
-              const response = await fetch("https://book-recipe-server.vercel.app/users");
+              const response = await fetch("https://book-recipes-server.vercel.app/users");
               const data = await response.json();
               return data;
             },
@@ -95,7 +95,7 @@ export const router = createBrowserRouter([
             path: "/dashboard/allItems",
             element: <AllRecipe />,
             loader: async () => {
-              const response = await fetch("https://book-recipe-server.vercel.app/users");
+              const response = await fetch("https://book-recipes-server.vercel.app/users");
               const data = await response.json();
               return data;
             },
@@ -109,7 +109,7 @@ export const router = createBrowserRouter([
             path: "/dashboard/myItems",
             element: <MyItemsTable />,
             loader: async () => {
-              const response = await fetch("https://book-recipe-server.vercel.app/users");
+              const response = await fetch("https://book-recipes-server.vercel.app/users");
               const data = await response.json();
               return data;
             },
