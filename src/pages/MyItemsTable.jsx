@@ -6,7 +6,7 @@ const MyItemsTable = () => {
   const { user } = useContext(AuthContext);
   useEffect(() => {
     if (user?.email) {
-      fetch(`https://book-recipes-server.vercel.app/users/email/${user.email}`)
+      fetch(`https://server-side-eight-pearl.vercel.app/users/email/${user.email}`)
         .then((res) => res.json())
         .then((data) => {
           setItems(data || []);
@@ -97,7 +97,7 @@ const MyItemsTable = () => {
       if (result.isConfirmed) {
         const updateData = result.value;
 
-        fetch(`https://book-recipes-server.vercel.app/users/${id}`, {
+        fetch(`https://server-side-eight-pearl.vercel.app/users/${id}`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
@@ -132,7 +132,7 @@ const MyItemsTable = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://book-recipes-server.vercel.app/users/${id}`, {
+        fetch(`https://server-side-eight-pearl.vercel.app/users/${id}`, {
           method: "DELETE",
           headers: {
             "Content-Type": "application/json",

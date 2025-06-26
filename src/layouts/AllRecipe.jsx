@@ -11,8 +11,8 @@ const AllRecipe = () => {
     try {
       const res = fetch(
         selectTarget === "All"
-          ? "https://book-recipes-server.vercel.app/recipes"
-          : `https://book-recipes-server.vercel.app/recipes?cuisine=${selectTarget}`
+          ? "https://server-side-eight-pearl.vercel.app/recipes"
+          : `https://server-side-eight-pearl.vercel.app/recipes?cuisine=${selectTarget}`
       );
       res
         .then((response) => response.json())

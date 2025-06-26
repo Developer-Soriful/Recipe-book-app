@@ -74,7 +74,7 @@ const MyRecipeCard = ({ item, onDelete }) => {
             if (result.isConfirmed) {
                 const updateData = result.value;
 
-                fetch(`https://book-recipes-server.vercel.app/users/${id}`, {
+                fetch(`https://server-side-eight-pearl.vercel.app/users/${id}`, {
                     method: "PUT",
                     headers: {
                         "Content-Type": "application/json",
@@ -110,7 +110,7 @@ const MyRecipeCard = ({ item, onDelete }) => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`https://book-recipes-server.vercel.app/users/${id}`, {
+                fetch(`https://server-side-eight-pearl.vercel.app/users/${id}`, {
                     method: "DELETE",
                     headers: {
                         "Content-Type": "application/json"
