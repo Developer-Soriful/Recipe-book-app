@@ -19,7 +19,7 @@ const RootLayout = () => {
   return (
     <>
       <div className="flex flex-col ">
-        <header className="w-11/12 mx-auto">
+        <header className="w-11/12 mx-auto sticky top-0 z-50 ">
           <Header />
         </header>
 
