@@ -23,7 +23,9 @@ export const router = createBrowserRouter([
       {
         index: true,
         loader: async () => {
-          const response = await fetch("https://server-side-eight-pearl.vercel.app/toprecipe");
+          const response = await fetch(
+            "https://server-side-eight-pearl.vercel.app/toprecipe"
+          );
           const data = await response.json();
           return data;
         },
@@ -32,7 +34,9 @@ export const router = createBrowserRouter([
       {
         path: "/allrecipes",
         loader: async () => {
-          const response = await fetch("https://server-side-eight-pearl.vercel.app/users");
+          const response = await fetch(
+            "https://server-side-eight-pearl.vercel.app/users"
+          );
           const data = await response.json();
           return data;
         },
@@ -79,14 +83,20 @@ export const router = createBrowserRouter([
       },
       {
         path: "/dashboard",
-        element: <Dashboard />,
+        element: (
+          <PrivateRoute>
+            <Dashboard />
+          </PrivateRoute>
+        ),
 
         children: [
           {
             index: true,
             element: <Overview />,
             loader: async () => {
-              const response = await fetch("https://server-side-eight-pearl.vercel.app/users");
+              const response = await fetch(
+                "https://server-side-eight-pearl.vercel.app/users"
+              );
               const data = await response.json();
               return data;
             },
@@ -95,7 +105,9 @@ export const router = createBrowserRouter([
             path: "/dashboard/allItems",
             element: <AllRecipe />,
             loader: async () => {
-              const response = await fetch("https://server-side-eight-pearl.vercel.app/users");
+              const response = await fetch(
+                "https://server-side-eight-pearl.vercel.app/users"
+              );
               const data = await response.json();
               return data;
             },
@@ -109,11 +121,13 @@ export const router = createBrowserRouter([
             path: "/dashboard/myItems",
             element: <MyItemsTable />,
             loader: async () => {
-              const response = await fetch("https://server-side-eight-pearl.vercel.app/users");
+              const response = await fetch(
+                "https://server-side-eight-pearl.vercel.app/users"
+              );
               const data = await response.json();
               return data;
             },
-          }
+          },
         ],
       },
     ],
